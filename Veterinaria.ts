@@ -1,4 +1,4 @@
-import { RedVeterinaria } from "./redVeterinaria";
+import { RedVeterinaria } from "./RedVeterinaria";
 import { Paciente } from "./Paciente";
 import { Cliente } from "./Cliente";
 
@@ -30,17 +30,17 @@ export class Veterinaria extends RedVeterinaria {
   };
   
 
-  public bajaCliente (id: string): boolean {
+  public bajaCliente (nombreCliente: string): boolean {
       let existe: number;
-      
-      this.clientes.forEach((cliente, index) => {
-        if (cliente.getId() === id) {
-          this.clientes.splice(index, 1);
-          return true;
-        }
-      });
+      existe = this.clientes.findIndex(c => c.getNombre() === nombreCliente);
 
-      return false;
+      if (existe != -1){
+          this.clientes.splice(existe, 1);
+          return true;
+
+      } else {
+          return false;
+      }
     
   };
 
