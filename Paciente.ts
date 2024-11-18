@@ -1,9 +1,10 @@
 export class Paciente{
 
-    protected nombre: string;
-    protected especie: string
+    private nombre: string;
+    private especie: string
+    
 
-    constructor( nombre: string, especie:string){
+    constructor(nombre: string, especie: string){
         this.nombre = nombre;
         this.especie = especie;
     }
@@ -12,7 +13,7 @@ export class Paciente{
         return this.nombre
     }
 
-    public getespecie(): string{
+    public getEspecie(): string{
         return this.especie
     }
 
@@ -36,7 +37,10 @@ export class Paciente{
         if (!especieValida) {
             console.log(`Especie no reconocida. Registrando como '${especie}'.`);
         }
+
         return new Paciente(nombre, especie);
     }
+
+    
 }
 

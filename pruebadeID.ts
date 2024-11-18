@@ -14,16 +14,16 @@ console.log(arrayDeIds);*/
 
 const arrPacientes: Persona[] = [];
 
-function altaPersona (nombre: string, telefono: number) {
+function altaPersona (nombre: string, telefono: number, direccion: string) {
     arrayDeIds.push(`Persona${arrayDeIds.length+1}`);
-    let nuevaPersona = new Persona (arrayDeIds[arrayDeIds.length], nombre, telefono);
-    arrPacientes.push(nuevaPersona)
+    //let nuevaPersona = new Persona (arrayDeIds[arrayDeIds.length], nombre, telefono, direccion);
+    //arrPacientes.push(nuevaPersona)
 }
 
 console.log("arreglo de ids: " + arrayDeIds);
 console.log("arreglo de pacientes: " + arrPacientes);
 
-altaPersona("enzo", 1231231);
+//altaPersona("enzo", 1231231);
 
 console.log("arreglo de ids: " + arrayDeIds);
 console.log("arreglo de pacientes: " + arrPacientes);

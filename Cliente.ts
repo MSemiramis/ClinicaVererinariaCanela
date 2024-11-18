@@ -1,15 +1,15 @@
 import { Persona } from "./Persona";
-//import { Paciente } from "./Paciente";
+import { Paciente } from "./Paciente";
 
 export class Cliente extends Persona {
     private isVip: boolean = false;
     private cantVisitas: number = 1;
     private visitas: string [] = [];
-    //private mascotas: Paciente [] = [];
+    private mascotas: Paciente [] = [];
 
-    constructor(id: string, nombre: string, telefono: number, motivoVisita: string){
-        super(id, nombre, telefono);
-        this.visitas [0] = motivoVisita;
+    constructor(id: string, nombre: string, direccion: string, telefono: number, mascota: Paciente){
+        super(id, nombre, telefono, direccion);
+        this.mascotas.push(mascota);
     }
 
     mostrarVisitas(): void {
@@ -21,8 +21,8 @@ export class Cliente extends Persona {
 
     mostrarMascotas(): void {
         console.log(`Mascota/s a cargo del cliente ${this.getNombre()}:`)
-        this.visitas.forEach(m => {
-            //console.log(`Nombre: ${m.getNombre()}. Especie: ${m.getRaza()}`); DESCOMENTAR CUANDO SE TENGA CLASE PACIENTE
+        this.mascotas.forEach(m => {
+            console.log(`Nombre: ${m.getNombre()}. Especie: ${m.getEspecie()}`); 
         });
     }
 
