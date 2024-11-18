@@ -38,6 +38,10 @@ export class Cliente extends Persona {
         return this.visitas;
     }
 
+    getUltimaMascota(): string {
+        return this.mascotas[this.mascotas.length-1].getNombre();
+    }
+
     // getMascotas(): string[] {
     //     return this.mascotas;
     // }

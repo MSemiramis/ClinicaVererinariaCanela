@@ -4,7 +4,7 @@ export class Proveedor extends Persona {
     private productos: string [] = [];
 
     constructor(id: string, nombre: string, telefono: number, producto: string){
-        super(id, nombre, telefono);
+        super(id, nombre, telefono, producto);
         this.productos[0] = producto;
     }
     

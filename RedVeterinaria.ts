@@ -2,7 +2,7 @@ import { Veterinaria } from "./Veterinaria";
 import { Proveedor } from "./Proveedor";
 import { Persona } from "./Persona"
 
-export abstract class RedVeterinaria {
+export class RedVeterinaria {
    protected  veterinarias:  Veterinaria[] = [];
    protected  proveedores: Proveedor[] = [];
    protected contador : number = 0
@@ -10,7 +10,7 @@ export abstract class RedVeterinaria {
    // Generar los id para veterinarias y proveedores incrementando el contador
 
     public generarId(prefijo:string): string {
-        this.contador = this.contador+1;
+        this.contador++;
         return prefijo + this.contador; 
     }
 

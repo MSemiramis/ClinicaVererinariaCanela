@@ -1,4 +1,6 @@
-//import {Veterinaria} from "./Veterinaria";
+const {Veterinaria} = require("./Veterinaria.js");
+//const { Cliente } = require("./Cliente");
+//const { Paciente } = require("./Paciente");
 
 const tituloSeccion = document.getElementById("titulo-seccion");
 const btnConsulta = document.getElementById("btn-consulta");
@@ -6,6 +8,8 @@ const btnAlta = document.getElementById("btn-alta-cliente");
 const btnModif = document.getElementById("btn-modif-cliente");
 const btnBaja = document.getElementById("btn-baja-cliente");
 const divInputs = document.getElementById("div-inputs");
+
+const veterinariaOriginal = new Veterinaria("Canela", "Olavarria", "vet0");
 
 btnConsulta.addEventListener("click", nuevaConsulta);
 btnAlta.addEventListener("click", darDeAlta);
@@ -52,7 +56,9 @@ function darAltaCliente() {
     
     console.log("El cliente se llama " + nombreCliente + ", y su mascota se llama " + nombreMascota + " que es de raza " + razaMascota);
     
-    this.cliente.push(new Cliente(nombreCliente, direccionCliente, celularCliente, nombreMascota, razaMascota));  //   -----> ¿¿¿Asi se agregaría un nuevo cliente al array???
+    veterinariaOriginal.altaCliente(nombreCliente, direccionCliente, celularCliente, nombreMascota, razaMascota);
+
+    console.log("Arreglo de clientes de esta veterinaria: " + veterinariaOriginal.clientes);
 }
 
 function modificarCliente () {
@@ -74,7 +80,7 @@ function modificarCliente () {
 
 function buscarCliente () {
     let idAVerificar = document.getElementById("id-cliente").value;
-    let clienteCorrecto = this.cliente.find(cli => cli.id == idAVerificar);
+    let clienteCorrecto = this.clientes.find(cli => cli.id == idAVerificar);
     return clienteCorrecto;
 }
 
@@ -90,18 +96,30 @@ function actualizarTelefono() {
 }
 
 function actualizarDireccion() {
+    let clienteEncontrado = buscarCliente();
     nuevaDireccion = document.getElementById("nueva-direccion-paciente").value;
+
+    if (clienteEncontrado) {
+        clienteEncontrado.setDireccion(nuevoNumero);
+    } else {
+        alert("No se encontró un cliente con esa ID")
+    }
 }
 
 function agregarMascota() {
-  let nuevaMascota = document.getElementById("nuevo-paciente").value;
-  let razaNuevaMascota = document.getElementById("raza-nuevo-paciente").value;
-  
-  let clienteCorrespondiente = document.getElementById("nombre-cliente").value;
-  //let clienteEnArray = this.cliente.indexOf(clienteCorrespondiente).altaPaciente(nuevaMascota, razaNuevaMascota);
-  //ver si asi se encuentra y se agrega una nueva mascota para un cliente existente
-  
-  console.log("Se ha añadido a la mascota " + nuevaMascota + " al cliente " + clienteCorrespondiente);
+    let clienteEncontrado = buscarCliente();
+    let nombreNuevaMascota = document.getElementById("nuevo-paciente").value;
+    let razaNuevaMascota = document.getElementById("raza-nuevo-paciente").value;
+
+    if (clienteEncontrado) {
+        let nuevaMascota = new Paciente(nombreNuevaMascota, razaNuevaMascota);
+        clienteEncontrado.mascotas.push(nuevaMascota);
+        console.log(`El cliente ${clienteEncontrado.getNombre()} ahora tiene una nueva mascota, llamada ${clienteEncontrado.getUltimaMascota()}`)
+    } else {
+        alert("No se encontró un cliente con esa ID")
+    }
+    
+    console.log("Se ha añadido a la mascota " + nuevaMascota + " al cliente " + clienteCorrespondiente);
 }
 
 function eliminarMascota() {

@@ -23,11 +23,12 @@ export class Veterinaria extends RedVeterinaria {
   //public modificarPaciente () {};
 
   public altaCliente (nombreCliente, direccionCliente, celularCliente, nombreMascota, razaMascota) {
-    let nuevaId: string = this.generarId('cli');
+    let nuevaId: string = this.generarId('cli'); 
 
     let nuevaMascota = new Paciente(nombreMascota, razaMascota);
     this.clientes.push(new Cliente(nuevaId, nombreCliente, direccionCliente, celularCliente, nuevaMascota));
   };
+  
 
   public bajaCliente (nombreCliente: string): boolean {
       let existe: number;
