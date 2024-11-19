@@ -17,8 +17,8 @@ export class RedVeterinaria {
     // Métodos Veterinarias
 
     altaVeterinaria(nombre: string, direccion: string, telefono: number) {
-        const id = this.generarId("vet"); 
-        const nuevaVeterinaria = new Veterinaria(nombre, direccion, id); 
+        const id = this.generarId("VET"); 
+        const nuevaVeterinaria = new Veterinaria(nombre, direccion, telefono, id); 
         this.veterinarias.push(nuevaVeterinaria); 
         console.log(`Veterinaria ${nombre} agregada con ID: ${id}`);
     }
@@ -51,9 +51,9 @@ export class RedVeterinaria {
     }
 
     // Métodos para Proveedores
-    altaProveedor(nombre: string, telefono: number, producto: string): void {
-        const id = this.generarId("prov"); 
-        const nuevoProveedor = new Proveedor(id, nombre, telefono, producto); // Crea un nuevo proveedor
+    altaProveedor(nombre: string, telefono: number, direccion: string, producto: string): void {
+        const id = this.generarId("PROV"); 
+        const nuevoProveedor = new Proveedor(id, nombre, telefono, direccion, producto); // Crea un nuevo proveedor
         this.proveedores.push(nuevoProveedor); // Agrega el proveedor a la lista
         console.log(`Proveedor ${nombre} agregado con ID: ${id}`);
     }

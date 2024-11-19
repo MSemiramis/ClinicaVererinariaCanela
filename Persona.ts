@@ -36,6 +36,14 @@ export abstract class Persona {
     public setTelefono(telefono: number): void {
         this.telefono = telefono;
     }
+
+    public getDireccion(): string {
+        return this.direccion;
+    }
+
+    public setDireccion(direccion: string): void {
+        this.direccion = direccion;
+    }
 }
 
 // const arrPacientes: Persona[] = [];

@@ -3,8 +3,8 @@ import { Persona } from "./Persona";
 export class Proveedor extends Persona {
     private productos: string [] = [];
 
-    constructor(id: string, nombre: string, telefono: number, producto: string){
-        super(id, nombre, telefono);
+    constructor(id: string, nombre: string, telefono: number, direccion: string, producto: string){
+        super(id, nombre, telefono, direccion);
         this.productos[0] = producto;
     }
     

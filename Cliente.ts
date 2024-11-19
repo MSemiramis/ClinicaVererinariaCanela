@@ -4,7 +4,7 @@ import { Paciente } from "./Paciente";
 export class Cliente extends Persona {
     private isVip: boolean = false;
     private cantVisitas: number = 1;
-    private visitas: string [] = [];
+    //private visitas: string [] = [];
     private mascotas: Paciente [] = [];
 
     constructor(id: string, nombre: string, direccion: string, telefono: number, mascota: Paciente){
@@ -12,21 +12,30 @@ export class Cliente extends Persona {
         this.mascotas.push(mascota);
     }
 
-    mostrarVisitas(): void {
-        console.log(`Motivo/s de visita/s del cliente ${this.getNombre()}:`)
-        this.visitas.forEach(v => {
-            console.log(`${v}`)
-        });
-    }
+    // addVisita(motivoVisita: string): void{
+    //     this.visitas.push(motivoVisita);
+    // }
+
+    // mostrarVisitas(): void {
+    //     console.log(`Motivo/s de visita/s del cliente ${this.getNombre()}:`)
+    //     this.visitas.forEach(v => {
+    //         console.log(`${v}`)
+    //     });
+    // }
+
+    // getVisitas(): string[] {
+    //     return this.visitas;
+    // }
 
     mostrarMascotas(): void {
-        console.log(`Mascota/s a cargo del cliente ${this.getNombre()}:`)
+        console.log(`\nPacientes del Cliente:`)
         this.mascotas.forEach(m => {
-            console.log(`Nombre: ${m.getNombre()}. Especie: ${m.getEspecie()}`); 
+            console.log(`Nombre: ${m.getNombre()}. Especie: ${m.getEspecie()}`);
         });
+        console.log(`\n`);
     }
 
-    getClientStatus(): boolean {
+    esVip(): boolean {
         return this.isVip;
     }
 
@@ -34,20 +43,8 @@ export class Cliente extends Persona {
         return this.cantVisitas;
     }
 
-    getVisitas(): string[] {
-        return this.visitas;
-    }
-
     getUltimaMascota(): string {
         return this.mascotas[this.mascotas.length-1].getNombre();
-    }
-
-    // getMascotas(): string[] {
-    //     return this.mascotas;
-    // }
-
-    addVisita(motivoVisita): void{
-        this.visitas.push(motivoVisita);
     }
 
     private setVip(b: boolean): void {
@@ -56,11 +53,13 @@ export class Cliente extends Persona {
 
     contarVisita(): void {
         this.cantVisitas++;
+        this.checkClientStatus();
     }
 
     checkClientStatus(): void { //Si ha hecho mas de 5 visitas, se convierte en VIP
-        if (this.getCantVisitas() > 5){
+        if (!this.esVip() && this.getCantVisitas() > 5){
             this.setVip(true);
+            console.log(`${this.getNombre()} es ahora Vip.`);
         }
     }
 
