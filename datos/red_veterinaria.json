@@ -1,68 +1,91 @@
 {
-    "veterinarias": [
+  "veterinarias": [
     {
-        "id": "VET1",
-        "nombre": "Veterinaria Salud Animal",
-        "direccion": "Av. Siempre Viva 742",
-        "telefono": 123456789,
-        "clientes": [
+      "id": "VET1",
+      "nombre": "Veterinaria Salud Animal",
+      "direccion": "Av. Siempre Viva 742",
+      "telefono": 123456789,
+      "clientes": [
+        {
+          "id": "CLI1",
+          "nombre": "Juan Pérez",
+          "direccion": "Calle Falsa 123",
+          "telefono": 987654321,
+          "cantVisitas": 1,
+          "isVip": false,
+          "mascotas": [
             {
-                "id": "CLI1",
-                "nombre": "Juan Pérez",
-                "direccion": "Calle Falsa 123",
-                "telefono": 987654321,
-                "mascotas": [
-                    {
-                        "id": "PAC1",
-                        "nombre": "Firulais",
-                        "especie": "perro"
-                    }
-                ]
+              "id": "PAC1",
+              "nombre": "Firulais",
+              "especie": "perro"
+            }
+          ]
+        },
+        {
+          "id": "CLI2",
+          "nombre": "Juan Sosa",
+          "direccion": "Calle Falsa 456",
+          "telefono": 987654321,
+          "cantVisitas": 1,
+          "isVip": false,
+          "mascotas": [
+            {
+              "id": "PAC2",
+              "nombre": "Firulais",
+              "especie": "perro"
             },
             {
-                "id": "CLI2",
-                "nombre": "Juan Sosa",
-                "direccion": "Calle Falsa 456",
-                "telefono": 987654321,
-                "mascotas": [
-                    {
-                        "id": "PAC2",
-                        "nombre": "Firulais",
-                        "especie": "perro"
-                    },
-                    {
-                        "id": "PAC3",
-                        "nombre": "Sapo",
-                        "especie": "exotico"
-                    }
-                ]
+              "id": "PAC3",
+              "nombre": "Sapo",
+              "especie": "exotico"
             }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VET6",
+      "nombre": "santa fe",
+      "direccion": "lavalle 3030",
+      "telefono": 234536,
+      "clientes": []
+    }
+  ],
+  "proveedores": [
+    {
+      "id": "PROV1",
+      "nombre": "Distribuidora Animalia",
+      "direccion": "Av. del Proveedor 101",
+      "telefono": 1122334455,
+      "productos": [
+        [
+          "vacunas perro"
         ]
-      }
-    ],
-    "proveedores": [
-      {
-        "id": "PROV1",
-        "nombre": "Distribuidora Animalia",
-        "direccion": "Av. del Proveedor 101",
-        "telefono": 1122334455,
-        "producto": ["vacunas perro"]
-      },
-      {
-        "id": "PROV2",
-        "nombre": "VetSupply S.A.",
-        "direccion": "Calle Comercio 500",
-        "telefono": 9988776655,
-        "producto": ["vacunas gatos", "anestesia exotica"]
-      },
-      {
-        "id": "PROV3",
-        "nombre": "Productos Veterinarios X",
-        "direccion": "Calle Proveedor 720",
-        "telefono": 5544332211,
-        "producto": ["anestesias"]
-      }
-    ],
-    "contador": 5
-  }
-  
+      ]
+    },
+    {
+      "id": "PROV2",
+      "nombre": "VetSupply S.A.",
+      "direccion": "Calle Comercio 500",
+      "telefono": 9988776655,
+      "productos": [
+        [
+          "vacunas gatos",
+          "anestesia exotica"
+        ]
+      ]
+    },
+    {
+      "id": "PROV3",
+      "nombre": "Productos Veterinarios X",
+      "direccion": "Calle Proveedor 720",
+      "telefono": 5544332211,
+      "productos": [
+        [
+          "anestesias"
+        ]
+      ]
+    }
+  ],
+  "contador": 6
+}
