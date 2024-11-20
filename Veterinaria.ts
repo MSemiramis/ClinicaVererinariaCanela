@@ -1,3 +1,5 @@
+import * as rls from "readline-sync";
+
 import { RedVeterinaria } from "./RedVeterinaria";
 import { Paciente } from "./Paciente";
 import { Cliente } from "./Cliente";
