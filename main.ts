@@ -1,43 +1,37 @@
+import * as rls from "readline-sync";
+import { Veterinaria } from "./Veterinaria";
 import { RedVeterinaria } from "./RedVeterinaria";
 import { Proveedor } from "./Proveedor";
-import { Veterinaria } from "./Veterinaria";
 
-/*//Crear proveedor
 
-const proverdor1 = new Proveedor (" ", "semi",1234, " pastilla" ) ;
-console.log (proverdor1);*/
+let palabraUsuario : string = rls.question("Ingrese una palabra: ");
+let RedVeterinariaAdmin = new RedVeterinaria ();
 
-// Crear veterinaria
+/*letveterinaria1 = new Veterinaria("Canela", "Olavarria", 28548455);*/
 
-const veterinarias:Veterinaria [] = []; 
-const proveedores:Proveedor [] = []; 
-let contador: number = 0
+RedVeterinariaAdmin.altaVeterinaria("Canela", "Olavarria", 28548455);
 
-function generarID(prefijo:string): string {
-    
-        contador = contador+1;
-        return prefijo + contador; 
-}
+RedVeterinariaAdmin.altaVeterinaria ("Curcuma", "Olavarria", 2284452658);
+RedVeterinariaAdmin.altaProveedor ("Juan Alvarez", 11525454, "av. cordoba 123", "pastillas")
 
-// Métodos Veterinarias
+let veterinaria1 : Veterinaria = RedVeterinariaAdmin.devolverVeterinaria("VET1")
 
-function altaVeterinaria(nombre: string, direccion: string, telefono: number) {
-    const id = generarID("vet"); 
-    const nuevaVeterinaria = new Veterinaria(id, nombre, direccion, telefono); 
-    veterinarias.push(nuevaVeterinaria); 
-    console.log(`Veterinaria ${nombre} agregada con ID: ${id}`);
-}
+//RedVeterinariaAdmin.modificarVeterinaria()
 
-function altaProveedor(nombre: string, telefono: number, producto: string): void {
-    const id = generarID("prov"); 
-    const nuevoProveedor = new Proveedor(id, nombre, telefono, producto); // Crea un nuevo proveedor
-    proveedores.push(nuevoProveedor); // Agrega el proveedor a la lista
-    console.log(`Proveedor ${nombre} agregado con ID: ${id}`);
-}
+veterinaria1.altaCliente('Agustin', 'Giovanelli 2955', 2284602570, 'Chester', 'gato');
+veterinaria1.altaCliente('Enzo', 'Giovanelli 2950', 2284602575, 'Rango', 'iguana');
 
-altaVeterinaria("elsa","ahfgh" ,2858741)
-altaProveedor("Pedro", 2285452, "vacunas")
-altaVeterinaria("pepe","ahfgh" ,2858741)
-altaVeterinaria("pato","ahfgh" ,2858741)
+veterinaria1.mostrarDatosClientes();
+
+veterinaria1.bajaCliente('CLI1');
+
+veterinaria1.bajaCliente('CLI6');
+
+veterinaria1.mostrarDatosClientes();
+
+veterinaria1.modificarCliente('CLI3', 'Sancho');
+
+veterinaria1.mostrarDatosClientes();
+
 
 
