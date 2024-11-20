@@ -53,12 +53,14 @@ function crearVeterinaria(){
 }
 
 function crearProveedor(){
-    let nombre: string = rls.question("Ingrese el nombre de la veterinaria: ");
-    let direccion: string = rls.question("Ingrese la direccion de la veterinaria: ");
-    let telefono: number = rls.questionInt("Ingrese el telefono de la veterinaria: ");
+    let nombre: string = rls.question("Ingrese el nombre del proveedor: ");
+    let telefono: number = rls.questionInt("Ingrese el telefono del proveedor: ");
+    let direccion: string = rls.question("Ingrese la direccion del proveedor: ");
+    let producto: string = rls.question("Ingrese el producto de venta: ");
+    
     console.log('\n');
 
-    redVeterinariaAdmin.altaVeterinaria(nombre, direccion, telefono);
+    redVeterinariaAdmin.altaProveedor(nombre, telefono ,direccion, producto);
 }
 
 function buscarVeterinaria(): Veterinaria{

@@ -1,5 +1,4 @@
 import { Proveedor } from "./Proveedor";
-import { Persona } from "./Persona"
 import { Veterinaria } from "./Veterinaria";
 
 export class RedVeterinaria {
@@ -11,13 +10,14 @@ export class RedVeterinaria {
        this.veterinarias = [];
        this.proveedores = [];
        this.contador = 0;
-   }
+   } 
 
    // Generar los id para veterinarias y proveedores incrementando el contador
     public generarId(prefijo:string): string {
         this.contador++;
         return prefijo + this.contador; 
     }
+    
 
     // Métodos Veterinarias
 
@@ -129,18 +129,33 @@ export class RedVeterinaria {
         }
     };
 
-    listarVeterinarias(): void{
+
+    listarVeterinarias(): void {
+        if (this.veterinarias.length === 0) {
+            console.log("\nNo hay veterinarias registradas.");
+            return;
+        }
         this.veterinarias.forEach((v) => {
             console.log(`\nNombre: ${v.getNombre()}`);
             console.log(`Direccion: ${v.getDireccion()}`);
             console.log(`Telefono: ${v.getTelefono()}`);
             console.log(`Id: ${v.getId()}`);
         });
-    };
-
-    listarProveedores(){
-        //listar proves
-    };
+    }
+    
+    listarProveedores(): void {
+        if (this.proveedores.length === 0) {
+            console.log("\nNo hay proveedores registrados.");
+            return;
+        }
+        this.proveedores.forEach((v) => {
+            console.log(`\nNombre: ${v.getNombre()}`);
+            console.log(`Telefono: ${v.getTelefono()}`);
+            console.log(`Direccion: ${v.getDireccion()}`);
+            console.log(`Producto: ${v.getProductos()}`);
+            console.log(`Id: ${v.getId()}`);
+        });
+    }    
 
 
 }
