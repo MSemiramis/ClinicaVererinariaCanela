@@ -1,20 +1,21 @@
-import { RedVeterinaria } from "./RedVeterinaria";
 import { Paciente } from "./Paciente";
 import { Cliente } from "./Cliente";
+import { RedVeterinaria } from "./RedVeterinaria";
 
-export class Veterinaria extends RedVeterinaria {
+export class Veterinaria {
   protected nombre: string;
   protected direccion: string;
   protected id: string;
   protected telefono: number;
   protected clientes: Cliente[] = [];
+  protected contador: number;
 
   constructor(nombre: string, direccion: string, telefono: number, id: string) {
-    super();
     this.nombre = nombre;
     this.direccion = direccion;
     this.id = id; 
     this.telefono = telefono;
+    this.contador = 0;
   }
 
   public altaNuevoPaciente(nombre: string, especie: string): Paciente {
@@ -36,6 +37,11 @@ export class Veterinaria extends RedVeterinaria {
 
   //public modificarPaciente () {};
 
+  public generarId(prefijo:string): string {
+    this.contador++;
+    return prefijo + this.contador; 
+}
+
   public altaCliente(nombreCliente: string, direccionCliente: string, celularCliente: number, nombreMascota: string, razaMascota: string): void {
     let idCli: string = this.generarId("CLI");
     let nuevaMascota: Paciente = this.altaNuevoPaciente(nombreMascota, razaMascota);
@@ -52,6 +58,18 @@ export class Veterinaria extends RedVeterinaria {
       }
     }
     return index;
+  }
+
+  public mostrarClienteXId(id: string){
+    let index = this.buscarIndicePorId(id);
+    
+    if (index != -1) {
+      this.mostrarDatosCliente(this.clientes[index]);
+      
+    } else {
+      console.log(`\nNo se pudo encontrar al cliente. El ID no existe.`);
+    }
+    
   }
 
   public bajaCliente(id: string): void {
@@ -80,8 +98,17 @@ export class Veterinaria extends RedVeterinaria {
   } 
 
   public mostrarDatosClientes(): void {
-    this.clientes.forEach((c) => {
-      console.log(`\nNombre del Cliente: ${c.getNombre()}`);
+    if(this.clientes.length != 0){
+      this.clientes.forEach((c) => {
+        this.mostrarDatosCliente(c);
+      });
+    } else {
+      console.log("No hay clientes registrados.");
+    }
+  }
+
+  public mostrarDatosCliente(c: Cliente): void{
+    console.log(`\nNombre del Cliente: ${c.getNombre()}`);
       console.log(`Direccion: ${c.getDireccion()}`);
       console.log(`Telefono: ${c.getTelefono()}`);
       console.log(`Id: ${c.getId()}`);
@@ -89,7 +116,6 @@ export class Veterinaria extends RedVeterinaria {
       console.log(`Cantidad de Visitas: ${c.getCantVisitas()}`);
 
       c.mostrarMascotas();
-    });
   }
 
   //Metodos get
@@ -104,6 +130,10 @@ export class Veterinaria extends RedVeterinaria {
 
   public getId(): string {
     return this.id;
+  }
+
+  public getTelefono(): number{
+    return this.telefono;
   }
 
   //Metodos set

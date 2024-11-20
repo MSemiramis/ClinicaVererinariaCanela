@@ -1,11 +1,17 @@
-import { Veterinaria } from "./Veterinaria";
 import { Proveedor } from "./Proveedor";
 import { Persona } from "./Persona"
+import { Veterinaria } from "./Veterinaria";
 
 export class RedVeterinaria {
-   protected  veterinarias:  Veterinaria[] = [];
-   protected  proveedores: Proveedor[] = [];
-   protected contador : number = 0
+   protected veterinarias: Veterinaria[];
+   protected proveedores: Proveedor[];
+   protected contador: number;
+
+   constructor(){
+       this.veterinarias = [];
+       this.proveedores = [];
+       this.contador = 0;
+   }
 
    // Generar los id para veterinarias y proveedores incrementando el contador
     public generarId(prefijo:string): string {
@@ -58,8 +64,7 @@ export class RedVeterinaria {
         }
         return index;
     }
-
-    
+ 
     public buscarVeterinariaPorNombre(nombre: string): number{
         let index = -1;
         for (let i = 0; i < this.veterinarias.length; i++) {
@@ -71,14 +76,22 @@ export class RedVeterinaria {
         return index;
     }
 
-
-
-    public devolverVeterinaria (id:string) : Veterinaria {
+    public devolverVeterinaria (id: string): Veterinaria {
         let index : number = this.buscarVeterinariaPorID(id);
         if (index != -1){
             return this.veterinarias[index]
         } else{
             return this.veterinarias[0] 
+        }
+        
+    }
+
+    public devolverVeterinariaXNombre (nombre: string): Veterinaria {
+        let index : number = this.buscarVeterinariaPorNombre(nombre);
+        if (index != -1){
+            return this.veterinarias[index];
+        } else{
+            return this.veterinarias[0];
         }
         
     }
@@ -114,7 +127,21 @@ export class RedVeterinaria {
         if (!proveedorEncontrado) {
             console.log(`Proveedor con ID: ${id} no encontrado.`);
         }
-    }
+    };
+
+    listarVeterinarias(): void{
+        this.veterinarias.forEach((v) => {
+            console.log(`\nNombre: ${v.getNombre()}`);
+            console.log(`Direccion: ${v.getDireccion()}`);
+            console.log(`Telefono: ${v.getTelefono()}`);
+            console.log(`Id: ${v.getId()}`);
+        });
+    };
+
+    listarProveedores(){
+        //listar proves
+    };
+
 
 }
 
