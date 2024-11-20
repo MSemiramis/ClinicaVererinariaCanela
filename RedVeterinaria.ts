@@ -173,6 +173,8 @@ export class RedVeterinaria {
         } else {
             console.log(`No se encontró ninguna veterinaria con ID ${id} para eliminar.`);
         }
+
+        this.guardarAutomaticamente();
     }
 
     modificarVeterinaria(id: string, nombre?: string, direccion?: string, telefono?: number): void {
@@ -192,6 +194,8 @@ export class RedVeterinaria {
         if (!veterinariaEncontrada) {
             console.log(`Veterinaria con ID: ${id} no encontrada.`);
         }
+
+        //this.guardarAutomaticamente();   Chequear si funciona bien
     }
 
     public buscarVeterinariaPorID(id: string): number{
@@ -261,6 +265,8 @@ export class RedVeterinaria {
         }
 
         console.log(`Proveedor con ID: ${id} eliminado.`);
+
+        this.guardarAutomaticamente();
     }
 
     modificarProveedor(id: string, nombre?: string, telefono?: number, producto?: string): void {
@@ -280,6 +286,8 @@ export class RedVeterinaria {
         if (!proveedorEncontrado) {
             console.log(`Proveedor con ID: ${id} no encontrado.`);
         }
+
+        this.guardarAutomaticamente();
     };
 
     listarVeterinarias(): void {

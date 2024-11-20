@@ -90,6 +90,42 @@ function bajaProveedorPorId(){
     let id: string = rls.question("Ingrese el ID de la veterinaria a dar de baja: ");
     redVeterinariaAdmin.bajaProveedor(id);
 }
+
+function pedirDatosModificarCliente(vete: Veterinaria){
+    let id: string = rls.question("Ingrese ID del cliente a modificiar: ");
+    console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
+    let nombre: string = rls.question("Ingrese un nuevo nombre: ");
+    let direccion: string = rls.question("Ingrese una nueva direccion: ");
+    let telefono: number = rls.questionInt("Ingrese un nuevo telefono: ");
+    
+    console.log('\n');
+
+    vete.modificarCliente(id, nombre, direccion, telefono);
+}
+
+// function pedirDatosModificarVeterinaria(){
+//     let id: string = rls.question("Ingrese ID del cliente a modificiar: ");
+//     console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
+//     let nombre: string = rls.question("Ingrese un nuevo nombre: ");
+//     let direccion: string = rls.question("Ingrese una nueva direccion: ");
+//     let telefono: number = rls.questionInt("Ingrese un nuevo telefono: ");
+    
+//     console.log('\n');
+
+//     vete.modificarCliente(id, nombre, direccion, telefono);
+// }
+
+// function pedirDatosModificarProveedor(){
+//     let id: string = rls.question("Ingrese ID del cliente a modificiar: ");
+//     console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
+//     let nombre: string = rls.question("Ingrese un nuevo nombre: ");
+//     let direccion: string = rls.question("Ingrese una nueva direccion: ");
+//     let telefono: number = rls.questionInt("Ingrese un nuevo telefono: ");
+    
+//     console.log('\n');
+
+//     vete.modificarCliente(id, nombre, direccion, telefono);
+// }
 //Funciones de menu
 
 function menuPrincipal(): number{
@@ -99,8 +135,10 @@ function menuPrincipal(): number{
     console.log("3. Dar de Alta un Proveedor.");
     console.log("4. Dar de Baja una Veterinaria.");
     console.log("5. Dar de Baja un Proveedor.");
-    console.log("6. Listar Veterinarias.");
-    console.log("7. Listar Proveedores.");
+    console.log("6. Modificar una Veterinaria.");
+    console.log("7. Modificar un Proveedores.");
+    console.log("8. Listar Veterinarias.");
+    console.log("9. Listar Proveedores.");
     console.log("0. Salir.");
 
     let entrada: number = rls.questionInt("\nIngrese una opcion. Ingrese 0 para Salir: ");
@@ -136,11 +174,19 @@ function switchMenuPrincipal(entrada: number){
                 bajaProveedorPorId();
                 volverAtras();
             break;
-        case 6: //Listar Veterinarias
+        case 6: //Modificar Veterinaria
+                // pedirDatosModificarVeterinaria();
+                volverAtras();
+            break;
+        case 7: //Modificar Proveedor   
+                // pedirDatosModificarProveedor();
+                volverAtras();
+            break;
+        case 8: //Listar Veterinarias
                 redVeterinariaAdmin.listarVeterinarias();
                 volverAtras();
             break;
-        case 7: //Listar Proveedores
+        case 9: //Listar Proveedores
                 redVeterinariaAdmin.listarProveedores();
                 volverAtras();
             break;
@@ -158,7 +204,7 @@ function menuVeterinaria(nombreV: string): number {
     console.log("3. Modificar un Cliente.");
     console.log("4. Buscar un Cliente por ID.");
     console.log("5. Mostrar todos los Clientes.");
-    console.log("\n6. Gestionar Pacientes.");
+    console.log("\n---6. Gestionar Pacientes---");
     console.log("7. Volver Atras.");
     console.log("0. Salir.");
 
@@ -167,6 +213,7 @@ function menuVeterinaria(nombreV: string): number {
 
     return entrada;
 }
+
 
 function switchMenuVeterinaria(entrada: number, v: Veterinaria){
     switch (entrada) {
@@ -178,7 +225,7 @@ function switchMenuVeterinaria(entrada: number, v: Veterinaria){
                 v.bajaCliente(idBaja);
             break;
         case 3: //Modificar un Cliente
-                //modificarCliente();
+                pedirDatosModificarCliente(v);
             break;
         case 4: //Buscar un Cliente por ID
                 let idBuscar = pedirId(); 
@@ -225,7 +272,3 @@ function pedirId(): string{
     let id: string = rls.question("\nIngrese el ID a buscar: "); 
     return id;
 }
-
-
-
-

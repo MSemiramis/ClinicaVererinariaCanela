@@ -91,10 +91,11 @@ export class Veterinaria {
       if (nombre) this.clientes[pos].setNombre(nombre);
       if (direccion) this.clientes[pos].setDireccion(direccion);
       if (telefono) this.clientes[pos].setTelefono(telefono);
-    }
-
-    console.log(`Cliente modificado con exito.`);
-      
+      console.log(`Cliente modificado con exito.`);
+    } else {
+      console.log(`No se pudo modificar al cliente con ID: ${id}`)
+    }    
+    
   } 
 
   public mostrarDatosClientes(): void {
