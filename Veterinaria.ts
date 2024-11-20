@@ -115,7 +115,7 @@ export class Veterinaria {
       console.log(`Es VIP: ${c.esVip() ? 'Si' : 'No'}`);
       console.log(`Cantidad de Visitas: ${c.getCantVisitas()}`);
 
-      c.mostrarMascotas();
+      c.mostrarMascotas(c);
   }
 
   //Metodos get

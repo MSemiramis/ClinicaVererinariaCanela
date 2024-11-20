@@ -23,14 +23,14 @@ export class Cliente extends Persona {
     //     });
     // }
 
-    // getVisitas(): string[] {
-    //     return this.visitas;
-    // }
+    getPacientes(): Paciente[] {
+        return this.mascotas;
+    }
 
-    mostrarMascotas(): void {
+    mostrarMascotas(c: Cliente): void {
         console.log(`\nPacientes del Cliente:`)
-        this.mascotas.forEach(m => {
-            console.log(`Nombre: ${m.getNombre()}. Especie: ${m.getEspecie()}`);
+        c.mascotas.forEach(p => {
+            console.log(`Nombre: ${p.getNombre()}. Especie: ${p.getEspecie()}`);
         });
         console.log(`\n`);
     }

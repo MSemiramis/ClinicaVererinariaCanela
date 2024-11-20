@@ -1,20 +1,20 @@
 export class Paciente{
 
+    private id: string;
     private nombre: string;
     private especie: string
-    private id: string;
 
-    constructor(nombre: string, especie: string, id: string){
+    constructor(id: string, nombre: string, especie: string){
+        this.id = id;
         this.nombre = nombre;
         this.especie = especie;
-        this.id = id;
     }
     
-    public getNombre(): string{
-        return this.nombre
+    getNombre(): string {
+        return this.nombre;
     }
 
-    public getEspecie(): string{
+    getEspecie(): string{
         return this.especie;
     }
 

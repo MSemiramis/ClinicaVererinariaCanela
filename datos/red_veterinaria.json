@@ -1,41 +1,42 @@
 {
     "veterinarias": [
-      {
+    {
         "id": "VET1",
         "nombre": "Veterinaria Salud Animal",
         "direccion": "Av. Siempre Viva 742",
         "telefono": 123456789,
         "clientes": [
-          {
-            "id": "CLI1",
-            "nombre": "Juan Pérez",
-            "direccion": "Calle Falsa 123",
-            "telefono": 987654321,
-            "cantVisitas": 3,
-            "isVip": false,
-            "mascotas": [
-              {
-                "id": "PAC1",
-                "nombre": "Firulais",
-                "especie": "perro"
-              }
-            ]
-          },
-          {
-            "id": "CLI2",
-            "nombre": "Ana Gómez",
-            "direccion": "Calle Verdadera 456",
-            "telefono": 654321987,
-            "cantVisitas": 6,
-            "isVip": true,
-            "mascotas": [
-              {
-                "id": "PAC2",
-                "nombre": "Michi",
-                "especie": "gato"
-              }
-            ]
-          }
+            {
+                "id": "CLI1",
+                "nombre": "Juan Pérez",
+                "direccion": "Calle Falsa 123",
+                "telefono": 987654321,
+                "mascotas": [
+                    {
+                        "id": "PAC1",
+                        "nombre": "Firulais",
+                        "especie": "perro"
+                    }
+                ]
+            },
+            {
+                "id": "CLI2",
+                "nombre": "Juan Sosa",
+                "direccion": "Calle Falsa 456",
+                "telefono": 987654321,
+                "mascotas": [
+                    {
+                        "id": "PAC2",
+                        "nombre": "Firulais",
+                        "especie": "perro"
+                    },
+                    {
+                        "id": "PAC3",
+                        "nombre": "Sapo",
+                        "especie": "exotico"
+                    }
+                ]
+            }
         ]
       }
     ],

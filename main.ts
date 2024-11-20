@@ -35,11 +35,11 @@ veterinaria1.mostrarDatosClientes();
 */
 
 // Archivo principal
-const RUTA_DATOS : string = "./datos/red_veterinaria.json";
 
 let redVeterinariaAdmin = new RedVeterinaria();
 
-redVeterinariaAdmin.cargarDesdeJSON(RUTA_DATOS);
+redVeterinariaAdmin.cargarDesdeJSON();
+console.log(redVeterinariaAdmin)
 
 //Menues
 
@@ -59,6 +59,7 @@ function crearVeterinaria(){
     console.log('\n');
 
     redVeterinariaAdmin.altaVeterinaria(nombre, direccion, telefono);
+
 }
 
 function crearProveedor(){

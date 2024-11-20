@@ -9,12 +9,15 @@ export class RedVeterinaria {
    protected veterinarias: Veterinaria[];
    protected proveedores: Proveedor[];
    protected contador: number;
+   readonly RUTA_DATOS : string = "./datos/red_veterinaria.json";
 
    constructor(){
        this.veterinarias = [];
        this.proveedores = [];
        this.contador = 0;
    }
+
+   //Funciones para JSON
 
     guardarEnJSON(ruta: string): void {
         const data = {
@@ -28,9 +31,9 @@ export class RedVeterinaria {
         console.log(`Datos guardados en ${ruta}`);
     }
 
-    cargarDesdeJSON(ruta: string): void {
-        if (fs.existsSync(ruta)) {
-            const data = JSON.parse(fs.readFileSync(ruta, "utf-8"));
+    cargarDesdeJSON(): void {
+        if (fs.existsSync(this.RUTA_DATOS)) {
+            const data = JSON.parse(fs.readFileSync(this.RUTA_DATOS, "utf-8"));
     
             // Cargar veterinarias
             this.veterinarias = data.veterinarias.map((vet: any) => {
@@ -44,19 +47,33 @@ export class RedVeterinaria {
                 // Cargar clientes dentro de la veterinaria
                 if (vet.clientes && vet.clientes.length > 0) {
                     veterinaria.getClientes().push(...vet.clientes.map((cli: any) => {
-                        const mascotas = cli.mascotas.map((pac: any) => new Paciente(
-                            pac.id,
-                            pac.nombre,
-                            pac.especie
-                        ));
-    
-                        return new Cliente(
+                        // Crear el primer paciente para el constructor
+                        const primerPaciente = new Paciente(
+                            cli.mascotas[0].id,
+                            cli.mascotas[0].nombre,
+                            cli.mascotas[0].especie
+                        );
+                    
+                        // Crear el cliente con el primer paciente
+                        const cliente = new Cliente(
                             cli.id,
                             cli.nombre,
                             cli.direccion,
-                            cli.telefono,                          
-                            mascotas
+                            cli.telefono,
+                            primerPaciente
                         );
+                    
+                        // Agregar los demás pacientes al cliente (si los hay)
+                        for (let i = 1; i < cli.mascotas.length; i++) {
+                            const paciente = new Paciente(
+                                cli.mascotas[i].id,
+                                cli.mascotas[i].nombre,
+                                cli.mascotas[i].especie
+                            );
+                            cliente.getPacientes().push(paciente);
+                        }
+                    
+                        return cliente;
                     }));
                 }
     
@@ -74,11 +91,48 @@ export class RedVeterinaria {
     
             // Cargar contador
             this.contador = data.contador;
-            console.log(`Datos cargados desde ${ruta}`);
+            console.log(`Datos cargados desde ${this.RUTA_DATOS}`);
         } else {
-            console.log(`Archivo no encontrado: ${ruta}`);
+            console.log(`Archivo no encontrado: ${this.RUTA_DATOS}`);
         }
     }
+
+    private guardarAutomaticamente(): void {
+        let data = {
+            veterinarias: this.veterinarias.map(vet => ({
+                id: vet.getId(),
+                nombre: vet.getNombre(),
+                direccion: vet.getDireccion(),
+                telefono: vet.getTelefono(),
+                clientes: vet.getClientes().map(cli => ({
+                    id: cli.getId(),
+                    nombre: cli.getNombre(),
+                    direccion: cli.getDireccion(),
+                    telefono: cli.getTelefono(),
+                    cantVisitas: cli.getCantVisitas(),
+                    isVip: cli.esVip(),
+                    mascotas: cli.getPacientes().map(pac => ({
+                        id: pac.getId(),
+                        nombre: pac.getNombre(),
+                        especie: pac.getEspecie()
+                    }))
+                }))
+            })),
+            proveedores: this.proveedores.map(prov => ({
+                id: prov.getId(),
+                nombre: prov.getNombre(),
+                direccion: prov.getDireccion(),
+                telefono: prov.getTelefono(),
+                productos: prov.getProductos()
+            })),
+            contador: this.contador
+        };
+    
+        // Guardar el JSON en el archivo correspondiente
+        fs.writeFileSync(this.RUTA_DATOS, JSON.stringify(data, null, 2));
+        console.log('Datos guardados automáticamente.');
+    }
+
 
     // Generar los id para veterinarias y proveedores incrementando el contador
     public generarId(prefijo:string): string {
@@ -93,6 +147,8 @@ export class RedVeterinaria {
         const nuevaVeterinaria = new Veterinaria(nombre, direccion, telefono, id); 
         this.veterinarias.push(nuevaVeterinaria); 
         console.log(`Veterinaria ${nombre} agregada con ID: ${id}`);
+
+        this.guardarAutomaticamente();
     }
 
 
