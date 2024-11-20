@@ -81,13 +81,22 @@ export class RedVeterinaria {
             });
     
             // Cargar proveedores
-            this.proveedores = data.proveedores.map((prov: any) => new Proveedor(
-                prov.id,
-                prov.nombre,
-                prov.telefono,
-                prov.direccion,
-                prov.producto 
-            ));
+            this.proveedores = data.proveedores.map((prov: any) => {
+                const proveedor = new Proveedor(
+                    prov.id,
+                    prov.nombre,
+                    prov.telefono,
+                    prov.direccion,
+                    prov.productos[0] || "" // Cargar el primer producto para cumplir con el constructor
+                );
+
+                // Agregar los productos restantes
+                for (let i = 1; i < prov.productos.length; i++) {
+                    proveedor.addProduct(prov.productos[i]);
+                }
+
+                return proveedor;
+            });
     
             // Cargar contador
             this.contador = data.contador;
@@ -154,8 +163,16 @@ export class RedVeterinaria {
 
     // Elimina veterinaria por ID
     bajaVeterinaria(id: string) : void {
+        let dimA = this.veterinarias.length; 
         this.veterinarias = this.veterinarias.filter(vet => vet.getId() !== id); 
-        console.log(`Veterinaria con ID: ${id} eliminada.`);
+        let dimD = this.veterinarias.length; 
+
+        if (dimA > dimD) {
+            console.log(`Realizando Baja...`);
+            console.log(`La veterinaria con ID ${id} fue eliminada exitosamente.`);
+        } else {
+            console.log(`No se encontró ninguna veterinaria con ID ${id} para eliminar.`);
+        }
     }
 
     modificarVeterinaria(id: string, nombre?: string, direccion?: string, telefono?: number): void {
@@ -199,7 +216,7 @@ export class RedVeterinaria {
         return index;
     }
 
-    public devolverVeterinaria (id: string): Veterinaria {
+    public devolverVeterinariaXId (id: string): Veterinaria {
         let index : number = this.buscarVeterinariaPorID(id);
         if (index != -1){
             return this.veterinarias[index]
@@ -226,11 +243,23 @@ export class RedVeterinaria {
         const nuevoProveedor = new Proveedor(id, nombre, telefono, direccion, producto); 
         this.proveedores.push(nuevoProveedor); 
         console.log(`Proveedor ${nombre} agregado con ID: ${id}`);
+
+        this.guardarAutomaticamente();
     }
 
     // Elimina veterinaria por ID
     bajaProveedor(id: string): void {
+        let dimA = this.proveedores.length; 
         this.proveedores = this.proveedores.filter(prov => prov.getId() !== id); 
+        let dimD = this.proveedores.length; 
+
+        if (dimA > dimD) {
+            console.log(`Realizando Baja...`);
+            console.log(`El Proveedor con ID ${id} fue eliminado exitosamente.`);
+        } else {
+            console.log(`No se encontró ningun Proveedor con ID ${id} para eliminar.`);
+        }
+
         console.log(`Proveedor con ID: ${id} eliminado.`);
     }
 
@@ -264,6 +293,7 @@ export class RedVeterinaria {
             console.log(`Direccion: ${v.getDireccion()}`);
             console.log(`Telefono: ${v.getTelefono()}`);
             console.log(`Id: ${v.getId()}`);
+            console.log(`Clientes a cargo de la Veterinaria: ${v.getCantClientes()}`);
         });
     }
     

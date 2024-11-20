@@ -81,6 +81,15 @@ function buscarVeterinaria(): Veterinaria{
     return vete;
 }
 
+function bajaVeterinariaPorId(){
+    let id: string = rls.question("Ingrese el ID de la veterinaria a dar de baja: ");
+    redVeterinariaAdmin.bajaVeterinaria(id);
+}
+
+function bajaProveedorPorId(){
+    let id: string = rls.question("Ingrese el ID de la veterinaria a dar de baja: ");
+    redVeterinariaAdmin.bajaProveedor(id);
+}
 //Funciones de menu
 
 function menuPrincipal(): number{
@@ -88,12 +97,13 @@ function menuPrincipal(): number{
     console.log("1. Buscar una veterinaria.");
     console.log("2. Dar de Alta una Veterinaria.");
     console.log("3. Dar de Alta un Proveedor.");
-    console.log("4. Listar Veterinarias.");
-    console.log("5. Listar Proveedores.");
+    console.log("4. Dar de Baja una Veterinaria.");
+    console.log("5. Dar de Baja un Proveedor.");
+    console.log("6. Listar Veterinarias.");
+    console.log("7. Listar Proveedores.");
     console.log("0. Salir.");
 
     let entrada: number = rls.questionInt("\nIngrese una opcion. Ingrese 0 para Salir: ");
-    console.log('\n');
 
     return entrada;
 }
@@ -118,11 +128,19 @@ function switchMenuPrincipal(entrada: number){
         case 3: //Alta Proveedor
                 crearProveedor();
             break;
-        case 4: //Listar Veterinarias
+        case 4: //Baja Veterinaria
+                bajaVeterinariaPorId();
+                volverAtras();
+            break;
+        case 5: //Baja Proveedor
+                bajaProveedorPorId();
+                volverAtras();
+            break;
+        case 6: //Listar Veterinarias
                 redVeterinariaAdmin.listarVeterinarias();
                 volverAtras();
             break;
-        case 5: //Listar Proveedores
+        case 7: //Listar Proveedores
                 redVeterinariaAdmin.listarProveedores();
                 volverAtras();
             break;

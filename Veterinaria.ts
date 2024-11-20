@@ -140,6 +140,10 @@ export class Veterinaria {
     return this.clientes;
   }
 
+  public getCantClientes(): number{
+    return this.clientes.length;
+  }
+
   //Metodos set
 
   public setNombre(nuevoNombre: string): void {

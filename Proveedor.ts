@@ -30,8 +30,12 @@ export class Proveedor extends Persona {
     }
 
     mostrarProductos(): void{
+        let productos: string = `Productos: `;
+         
         this.productos.forEach((p) => {
-            console.log(`Productos: ${p} `);  
+            productos += `${p}. `;  
         });
+
+        console.log(productos);
     }
 }
