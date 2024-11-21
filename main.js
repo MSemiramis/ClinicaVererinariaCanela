@@ -145,9 +145,9 @@ function menuVeterinaria(nombreV) {
     console.log("1. Dar de Alta un Cliente.");
     console.log("2. Dar de Baja un Cliente.");
     console.log("3. Modificar un Cliente.");
-    console.log("4. Buscar un Cliente por ID.");
-    console.log("5. Mostrar todos los Clientes.");
-    console.log("\n---6. Gestionar Pacientes---");
+    console.log("4. Mostrar todos los Clientes.");
+    console.log("5. Alta nuevo paciente.");
+    console.log("6. Baja de paciente.");
     console.log("7. Volver Atras.");
     console.log("0. Salir.");
     var entrada = rls.questionInt("\nIngrese una opcion. Ingrese 0 para Salir: ");
@@ -166,16 +166,16 @@ function switchMenuVeterinaria(entrada, v) {
         case 3: //Modificar un Cliente
             pedirDatosModificarCliente(v);
             break;
-        case 4: //Buscar un Cliente por ID
-            var idBuscar = pedirId();
-            v.mostrarClienteXId(idBuscar);
-            volverAtras();
-            break;
-        case 5: //Mostrar todos los Clientes
+        case 4: //Mostrar todos los Clientes
             v.mostrarDatosClientes();
             volverAtras();
             break;
-        case 6: //Gestionar Pacientes
+        case 5: //Alta paciente
+            crearPaciente(v);
+            volverAtras();
+            break;
+        case 6: //Baja Pacientes
+            bajaPaciente(v);
             break;
         case 7: //Volver Atras
             menuPrincipal();
@@ -199,6 +199,17 @@ function crearCliente(vet) {
     var razaMasc = rls.question("Ingrese la raza de la mascota: ");
     console.log('\n');
     vet.altaCliente(nombre, direccion, telefono, nomMasc, razaMasc);
+}
+function crearPaciente(vete) {
+    var idDueño = rls.question("Ingrese el ID del cliente: ");
+    var mascota = rls.question("Ingrese el nombre de la mascota: ");
+    var razaMascota = rls.question("Ingrese la raza de la mascota: ");
+    vete.altaPaciente(mascota, razaMascota, idDueño);
+}
+function bajaPaciente(vete) {
+    var idDueño = rls.question("Ingrese el ID del cliente: ");
+    var idMascota = rls.question("Ingrese el ID de la mascota a dar de baja: ");
+    vete.bajaPaciente(idDueño, idMascota);
 }
 function pedirId() {
     var id = rls.question("\nIngrese el ID a buscar: ");

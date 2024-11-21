@@ -25,12 +25,28 @@
       "contador": 0
     },
     {
-      "clientes": [],
+      "clientes": [
+        {
+          "id": "CLI1",
+          "nombre": "enzo",
+          "telefono": 2284123123,
+          "direccion": "rivadavia 2150",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC1",
+              "nombre": "Pepe",
+              "especie": "exotico"
+            }
+          ]
+        }
+      ],
       "nombre": "curcuma",
       "direccion": "colon 2525",
       "id": "VET10",
       "telefono": 285258,
-      "contador": 0
+      "contador": 1
     }
   ],
   "proveedores": [

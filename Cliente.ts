@@ -30,7 +30,7 @@ export class Cliente extends Persona {
     mostrarMascotas(c: Cliente): void {
         console.log(`\nPacientes del Cliente:`)
         c.mascotas.forEach(p => {
-            console.log(`Nombre: ${p.getNombre()}. Especie: ${p.getEspecie()}`);
+            console.log(`Nombre: ${p.getNombre()}. Especie: ${p.getEspecie()}. ID: ${p.getId()}`);
         });
         console.log(`\n`);
     }
@@ -63,6 +63,30 @@ export class Cliente extends Persona {
         }
     }
 
+    agregarMascota(mascota: Paciente): void {
+        this.mascotas.push(mascota);
+    }
+
+    eliminarMascota(index: number) {
+
+    if (index != -1) {
+      this.mascotas.splice(index, 1);
+      console.log(`\nBaja realizada con exito.`);
+    } else {
+      console.log(`\nNo se pudo realiar la Baja. No se encontró la mascota buscada.`);
+    }
+    }
+
+    buscarIndicePorIdMascota(idMascota:string): number {
+        let index = -1;
+        for (let i = 0; i < this.mascotas.length; i++) {
+          if (this.mascotas[i].getId() === idMascota) {
+            index = i;
+          break;
+          }
+        }
+        return index;
+    }
    
 }
 

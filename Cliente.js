@@ -43,7 +43,7 @@ var Cliente = /** @class */ (function (_super) {
     Cliente.prototype.mostrarMascotas = function (c) {
         console.log("\nPacientes del Cliente:");
         c.mascotas.forEach(function (p) {
-            console.log("Nombre: ".concat(p.getNombre(), ". Especie: ").concat(p.getEspecie()));
+            console.log("Nombre: ".concat(p.getNombre(), ". Especie: ").concat(p.getEspecie(), ". ID: ").concat(p.getId()));
         });
         console.log("\n");
     };
@@ -68,6 +68,28 @@ var Cliente = /** @class */ (function (_super) {
             this.setVip(true);
             console.log("".concat(this.getNombre(), " es ahora Vip."));
         }
+    };
+    Cliente.prototype.agregarMascota = function (mascota) {
+        this.mascotas.push(mascota);
+    };
+    Cliente.prototype.eliminarMascota = function (index) {
+        if (index != -1) {
+            this.mascotas.splice(index, 1);
+            console.log("\nBaja realizada con exito.");
+        }
+        else {
+            console.log("\nNo se pudo realiar la Baja. No se encontr\u00F3 la mascota buscada.");
+        }
+    };
+    Cliente.prototype.buscarIndicePorIdMascota = function (idMascota) {
+        var index = -1;
+        for (var i = 0; i < this.mascotas.length; i++) {
+            if (this.mascotas[i].getId() === idMascota) {
+                index = i;
+                break;
+            }
+        }
+        return index;
     };
     return Cliente;
 }(Persona_1.Persona));

@@ -18,11 +18,34 @@ export class Veterinaria {
     this.contador = 0;
   }
 
+  public altaPaciente(nombre: string, especie: string, idDueño: string) {
+    let nuevaMascota: Paciente = this.altaNuevoPaciente(nombre, especie); 
+    let index: number = this.buscarIndicePorId(idDueño);
+
+    if (index != -1) {
+      this.clientes[index].agregarMascota(nuevaMascota);
+      console.log("Se ha agregado exitosamente la nueva mascota.")
+    } else {
+      console.log(`\nNo se pudo encontrar al cliente. El ID no existe.`);
+    }
+  }
+
   public altaNuevoPaciente(nombre: string, especie: string): Paciente {
     let idPac = this.generarId("PAC");
     especie = this.validarEspecie(especie);
 
-    return new Paciente(idPac,nombre, especie);
+    return new Paciente(idPac, nombre, especie);
+  }
+
+  public bajaPaciente(idDueño: string, idMascota: string): void {
+    let existeCliente: number;
+    existeCliente = this.buscarIndicePorId(idDueño);
+    
+    console.log(`\nIntentando realizar la baja del paciente con id ${idMascota}...`);
+    let existePaciente: number;
+    existePaciente = this.clientes[existeCliente].buscarIndicePorIdMascota(idMascota);
+    this.clientes[existeCliente].eliminarMascota(existePaciente);
+    
   }
   
 
@@ -58,8 +81,6 @@ export class Veterinaria {
     }
     return index;
   }
-
-
 
   public mostrarClienteXId(id: string){
     let index = this.buscarIndicePorId(id);

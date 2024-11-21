@@ -4,6 +4,7 @@ import * as fs from "fs";
 import { Veterinaria } from "./Veterinaria";
 import { RedVeterinaria } from "./RedVeterinaria";
 import { Proveedor } from "./Proveedor";
+import { Paciente } from "./Paciente";
 
 // Archivo principal
 
@@ -20,7 +21,7 @@ while (entrada != 0) {
     switchMenuPrincipal(entrada);
     entrada = menuPrincipal();
 }
-redVeterinariaAdmin.guardarEnJSON("./datos/red_veterinaria.json");
+redVeterinariaAdmin.guardarEnJSON();
 
 //Funciones Red Veterinaria
 
@@ -104,7 +105,8 @@ function pedirDatosModificarProveedor(){
         redVeterinariaAdmin.modificarProveedor(id, nombre, telefono, direccion);
     }else
     console.log(`Proveedor con ID: ${id} no encontrada.`);
- }
+}
+
  
 //Funciones de menu
 
@@ -182,9 +184,9 @@ function menuVeterinaria(nombreV: string): number {
     console.log("1. Dar de Alta un Cliente.");
     console.log("2. Dar de Baja un Cliente.");
     console.log("3. Modificar un Cliente.");
-    console.log("4. Buscar un Cliente por ID.");
-    console.log("5. Mostrar todos los Clientes.");
-    console.log("\n---6. Gestionar Pacientes---");
+    console.log("4. Mostrar todos los Clientes.");
+    console.log("5. Alta nuevo paciente.");
+    console.log("6. Baja de paciente.");
     console.log("7. Volver Atras.");
     console.log("0. Salir.");
 
@@ -212,16 +214,16 @@ function switchMenuVeterinaria(entrada: number, v: Veterinaria){
                     volverAtras();
             break;
         case 5: //Alta paciente
-                let idBuscar = pedirId(); 
-                v.mostrarClienteXId(idBuscar);
+                crearPaciente(v);
                 volverAtras();
            
             break;
         case 6: //Baja Pacientes
-                
+            bajaPaciente(v);    
             break;
         case 7: //Volver Atras
                 menuPrincipal();
+                redVeterinariaAdmin.guardarEnJSON();
             break;
     
         default:
@@ -247,6 +249,19 @@ function crearCliente(vet: Veterinaria): void{
     console.log('\n');
 
     vet.altaCliente(nombre, direccion, telefono, nomMasc, razaMasc);    
+}
+
+function crearPaciente(vete: Veterinaria): void {
+    let idDueño: string = rls.question("Ingrese el ID del cliente: ");
+    let mascota: string = rls.question("Ingrese el nombre de la mascota: ");
+    let razaMascota: string = rls.question("Ingrese la raza de la mascota: ");
+    vete.altaPaciente(mascota, razaMascota, idDueño); 
+}
+
+function bajaPaciente(vete: Veterinaria): void {
+    let idDueño: string = rls.question("Ingrese el ID del cliente: ");
+    let idMascota: string = rls.question("Ingrese el ID de la mascota a dar de baja: ");
+    vete.bajaPaciente(idDueño, idMascota);
 }
 
 function pedirId(): string{

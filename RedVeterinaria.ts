@@ -19,16 +19,16 @@ export class RedVeterinaria {
 
    //Funciones para JSON
 
-    guardarEnJSON(ruta: string): void {
+    guardarEnJSON(): void {
         const data = {
             veterinarias: this.veterinarias,
             proveedores: this.proveedores,
             contador: this.contador
         };
 
-        fs.writeFileSync(ruta, JSON.stringify(data, null, 2), "utf-8");
+        fs.writeFileSync(this.RUTA_DATOS, JSON.stringify(data, null, 2), "utf-8");
         
-        console.log(`Datos guardados en ${ruta}`);
+        console.log(`Datos guardados en ${this.RUTA_DATOS}`);
     }
 
     cargarDesdeJSON(): void {

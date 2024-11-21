@@ -12,12 +12,30 @@ var Veterinaria = /** @class */ (function () {
         this.telefono = telefono;
         this.contador = 0;
     }
+    Veterinaria.prototype.altaPaciente = function (nombre, especie, idDueño) {
+        var nuevaMascota = this.altaNuevoPaciente(nombre, especie);
+        var index = this.buscarIndicePorId(idDueño);
+        if (index != -1) {
+            this.clientes[index].agregarMascota(nuevaMascota);
+            console.log("Se ha agregado exitosamente la nueva mascota.");
+        }
+        else {
+            console.log("\nNo se pudo encontrar al cliente. El ID no existe.");
+        }
+    };
     Veterinaria.prototype.altaNuevoPaciente = function (nombre, especie) {
         var idPac = this.generarId("PAC");
         especie = this.validarEspecie(especie);
         return new Paciente_1.Paciente(idPac, nombre, especie);
     };
-    Veterinaria.prototype.bajaPaciente = function () { };
+    Veterinaria.prototype.bajaPaciente = function (idDueño, idMascota) {
+        var existeCliente;
+        existeCliente = this.buscarIndicePorId(idDueño);
+        var existePaciente;
+        existePaciente = this.clientes[existeCliente].buscarIndicePorIdMascota(idMascota);
+        this.clientes[existeCliente].eliminarMascota(existePaciente);
+        console.log("\nIntentando realizar la baja del paciente con id ".concat(idMascota, "..."));
+    };
     Veterinaria.prototype.validarEspecie = function (especie) {
         if (especie.toLowerCase() == "perro" || especie.toLowerCase() == "gato") {
             return especie;
