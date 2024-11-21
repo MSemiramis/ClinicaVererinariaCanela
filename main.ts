@@ -5,35 +5,6 @@ import { Veterinaria } from "./Veterinaria";
 import { RedVeterinaria } from "./RedVeterinaria";
 import { Proveedor } from "./Proveedor";
 
-//let redVeterinariaAdmin = new RedVeterinaria();
-/*
-let veterinaria2 = new Veterinaria("Canela", "Olavarria", 28548455, 'VET88');
-
-redVeterinariaAdmin.altaVeterinaria("Canela", "Olavarria", 28548455);
-
-redVeterinariaAdmin.altaVeterinaria ("Curcuma", "Olavarria", 2284452658);
-redVeterinariaAdmin.altaProveedor ("Juan Alvarez", 11525454, "av. cordoba 123", "pastillas")
-
-let veterinaria1: Veterinaria = redVeterinariaAdmin.devolverVeterinaria("VET1")
-
-//RedVeterinariaAdmin.modificarVeterinaria()
-
-veterinaria2.altaCliente('Agustin', 'Giovanelli 2955', 2284602570, 'Chester', 'gato');
-veterinaria2.altaCliente('Enzo', 'Giovanelli 2950', 2284602575, 'Rango', 'iguana');
-
-veterinaria2.mostrarDatosClientes();
-
-veterinaria1.bajaCliente('CLI1');
-
-veterinaria1.bajaCliente('CLI6');
-
-veterinaria1.mostrarDatosClientes();
-
-veterinaria1.modificarCliente('CLI3', 'Sancho');
-
-veterinaria1.mostrarDatosClientes();
-*/
-
 // Archivo principal
 
 let redVeterinariaAdmin = new RedVeterinaria();
@@ -49,6 +20,7 @@ while (entrada != 0) {
     switchMenuPrincipal(entrada);
     entrada = menuPrincipal();
 }
+redVeterinariaAdmin.guardarEnJSON("./datos/red_veterinaria.json");
 
 //Funciones Red Veterinaria
 
@@ -103,29 +75,37 @@ function pedirDatosModificarCliente(vete: Veterinaria){
     vete.modificarCliente(id, nombre, direccion, telefono);
 }
 
-// function pedirDatosModificarVeterinaria(){
-//     let id: string = rls.question("Ingrese ID del cliente a modificiar: ");
-//     console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
-//     let nombre: string = rls.question("Ingrese un nuevo nombre: ");
-//     let direccion: string = rls.question("Ingrese una nueva direccion: ");
-//     let telefono: number = rls.questionInt("Ingrese un nuevo telefono: ");
+function pedirDatosModificarVeterinaria(){
+    let id: string = rls.question("Ingrese ID la veterinaria a modificiar: ");
+    if (redVeterinariaAdmin.buscarVeterinariaPorID(id) != -1){
+        console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
+        let nombre: string = rls.question("Ingrese un nuevo nombre: ");
+        let direccion: string = rls.question("Ingrese una nueva direccion: ");
+        let telefono: number = rls.questionInt("Ingrese un nuevo telefono: ");
+
+        console.log('\n');
+
+        redVeterinariaAdmin.modificarVeterinaria(id, nombre, direccion, telefono);
+    }else
+        console.log(`Veterinaria con ID: ${id} no encontrada.`);
     
-//     console.log('\n');
+}
 
-//     vete.modificarCliente(id, nombre, direccion, telefono);
-// }
+function pedirDatosModificarProveedor(){
 
-// function pedirDatosModificarProveedor(){
-//     let id: string = rls.question("Ingrese ID del cliente a modificiar: ");
-//     console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
-//     let nombre: string = rls.question("Ingrese un nuevo nombre: ");
-//     let direccion: string = rls.question("Ingrese una nueva direccion: ");
-//     let telefono: number = rls.questionInt("Ingrese un nuevo telefono: ");
-    
-//     console.log('\n');
+    let id: string = rls.question("Ingrese ID del proveedor a modificiar: ");
+    if (redVeterinariaAdmin.buscarProveedorPorID(id) != -1){
+        console.log("Si no desea modificar alguno de los siguientes datos, solamente presione 'enter' cuando corresponda.");
+        let nombre: string = rls.question("Ingrese un nuevo nombre: ");
+        let telefono: number = rls.questionInt("Ingrese un nuevo telefono: "); 
+        let direccion: string = rls.question("Ingrese una nueva direccion: ");
+        console.log('\n');
 
-//     vete.modificarCliente(id, nombre, direccion, telefono);
-// }
+        redVeterinariaAdmin.modificarProveedor(id, nombre, telefono, direccion);
+    }else
+    console.log(`Proveedor con ID: ${id} no encontrada.`);
+ }
+ 
 //Funciones de menu
 
 function menuPrincipal(): number{
@@ -175,11 +155,11 @@ function switchMenuPrincipal(entrada: number){
                 volverAtras();
             break;
         case 6: //Modificar Veterinaria
-                // pedirDatosModificarVeterinaria();
+                pedirDatosModificarVeterinaria();
                 volverAtras();
             break;
         case 7: //Modificar Proveedor   
-                // pedirDatosModificarProveedor();
+                pedirDatosModificarProveedor();
                 volverAtras();
             break;
         case 8: //Listar Veterinarias
@@ -227,16 +207,17 @@ function switchMenuVeterinaria(entrada: number, v: Veterinaria){
         case 3: //Modificar un Cliente
                 pedirDatosModificarCliente(v);
             break;
-        case 4: //Buscar un Cliente por ID
+        case 4: //Mostrar todos los Clientes
+                    v.mostrarDatosClientes();
+                    volverAtras();
+            break;
+        case 5: //Alta paciente
                 let idBuscar = pedirId(); 
                 v.mostrarClienteXId(idBuscar);
                 volverAtras();
+           
             break;
-        case 5: //Mostrar todos los Clientes
-                v.mostrarDatosClientes();
-                volverAtras();
-            break;
-        case 6: //Gestionar Pacientes
+        case 6: //Baja Pacientes
                 
             break;
         case 7: //Volver Atras

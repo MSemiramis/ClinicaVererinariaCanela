@@ -22,10 +22,9 @@ export class Veterinaria {
     let idPac = this.generarId("PAC");
     especie = this.validarEspecie(especie);
 
-    return new Paciente(nombre, especie, idPac);
+    return new Paciente(idPac,nombre, especie);
   }
-
-  public bajaPaciente() {}
+  
 
   public validarEspecie(especie: string): string {
     if (especie.toLowerCase() == "perro" || especie.toLowerCase() == "gato") {
@@ -59,6 +58,8 @@ export class Veterinaria {
     }
     return index;
   }
+
+
 
   public mostrarClienteXId(id: string){
     let index = this.buscarIndicePorId(id);

@@ -106,7 +106,7 @@ export class RedVeterinaria {
         }
     }
 
-    private guardarAutomaticamente(): void {
+   /* public guardarAutomaticamente(): void {
         let data = {
             veterinarias: this.veterinarias.map(vet => ({
                 id: vet.getId(),
@@ -140,7 +140,7 @@ export class RedVeterinaria {
         // Guardar el JSON en el archivo correspondiente
         fs.writeFileSync(this.RUTA_DATOS, JSON.stringify(data, null, 2));
         console.log('Datos guardados automáticamente.');
-    }
+    }*/
 
 
     // Generar los id para veterinarias y proveedores incrementando el contador
@@ -157,7 +157,6 @@ export class RedVeterinaria {
         this.veterinarias.push(nuevaVeterinaria); 
         console.log(`Veterinaria ${nombre} agregada con ID: ${id}`);
 
-        this.guardarAutomaticamente();
     }
 
 
@@ -174,7 +173,6 @@ export class RedVeterinaria {
             console.log(`No se encontró ninguna veterinaria con ID ${id} para eliminar.`);
         }
 
-        this.guardarAutomaticamente();
     }
 
     modificarVeterinaria(id: string, nombre?: string, direccion?: string, telefono?: number): void {
@@ -195,13 +193,23 @@ export class RedVeterinaria {
             console.log(`Veterinaria con ID: ${id} no encontrada.`);
         }
 
-        //this.guardarAutomaticamente();   Chequear si funciona bien
     }
 
     public buscarVeterinariaPorID(id: string): number{
         let index = -1;
         for (let i = 0; i < this.veterinarias.length; i++) {
           if (this.veterinarias[i].getId() === id) {
+            index = i;
+          break;
+          }
+        }
+        return index;
+    }
+
+    public buscarProveedorPorID(id: string): number{
+        let index = -1;
+        for (let i = 0; i < this.proveedores.length; i++) {
+          if (this.proveedores[i].getId() === id) {
             index = i;
           break;
           }
@@ -248,7 +256,6 @@ export class RedVeterinaria {
         this.proveedores.push(nuevoProveedor); 
         console.log(`Proveedor ${nombre} agregado con ID: ${id}`);
 
-        this.guardarAutomaticamente();
     }
 
     // Elimina veterinaria por ID
@@ -266,10 +273,9 @@ export class RedVeterinaria {
 
         console.log(`Proveedor con ID: ${id} eliminado.`);
 
-        this.guardarAutomaticamente();
     }
 
-    modificarProveedor(id: string, nombre?: string, telefono?: number, producto?: string): void {
+    modificarProveedor(id: string, nombre?: string, telefono?: number, direccion?:string): void {
         let proveedorEncontrado: boolean = false;
     
         this.proveedores.forEach(p => {
@@ -277,9 +283,10 @@ export class RedVeterinaria {
                 proveedorEncontrado = true; 
                 if (nombre) p.setNombre(nombre);
                 if (telefono) p.setTelefono(telefono);
-                if (producto) p.addProduct(producto);
+                if (direccion) p.setDireccion(direccion);
                 console.log(`Proveedor con ID: ${id} modificado.`);
             }
+            return
         });
     
         // Si no encontramos el proveedor, mostramos un mensaje
@@ -287,7 +294,6 @@ export class RedVeterinaria {
             console.log(`Proveedor con ID: ${id} no encontrado.`);
         }
 
-        this.guardarAutomaticamente();
     };
 
     listarVeterinarias(): void {
