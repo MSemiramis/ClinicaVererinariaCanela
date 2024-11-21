@@ -11,7 +11,7 @@ import { Paciente } from "./Paciente";
 let redVeterinariaAdmin = new RedVeterinaria();
 
 redVeterinariaAdmin.cargarDesdeJSON();
-console.log(redVeterinariaAdmin)
+//console.log(redVeterinariaAdmin)
 
 //Menues
 
@@ -21,6 +21,7 @@ while (entrada != 0) {
     switchMenuPrincipal(entrada);
     entrada = menuPrincipal();
 }
+
 redVeterinariaAdmin.guardarEnJSON();
 
 //Funciones Red Veterinaria
@@ -60,7 +61,7 @@ function bajaVeterinariaPorId(){
 }
 
 function bajaProveedorPorId(){
-    let id: string = rls.question("Ingrese el ID de la veterinaria a dar de baja: ");
+    let id: string = rls.question("Ingrese el ID del proveedor a dar de baja: ");
     redVeterinariaAdmin.bajaProveedor(id);
 }
 
@@ -210,16 +211,15 @@ function switchMenuVeterinaria(entrada: number, v: Veterinaria){
                 pedirDatosModificarCliente(v);
             break;
         case 4: //Mostrar todos los Clientes
-                    v.mostrarDatosClientes();
-                    volverAtras();
+                v.mostrarDatosClientes();
+                volverAtras();
             break;
         case 5: //Alta paciente
                 crearPaciente(v);
-                volverAtras();
-           
+                volverAtras(); 
             break;
         case 6: //Baja Pacientes
-            bajaPaciente(v);    
+                bajaPaciente(v);    
             break;
         case 7: //Volver Atras
                 menuPrincipal();

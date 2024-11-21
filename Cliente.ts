@@ -4,24 +4,12 @@ import { Paciente } from "./Paciente";
 export class Cliente extends Persona {
     private isVip: boolean = false;
     private cantVisitas: number = 1;
-    //private visitas: string [] = [];
     private mascotas: Paciente [] = [];
 
     constructor(id: string, nombre: string, direccion: string, telefono: number, mascota: Paciente){
         super(id, nombre, telefono, direccion);
         this.mascotas.push(mascota);
     }
-
-    // addVisita(motivoVisita: string): void{
-    //     this.visitas.push(motivoVisita);
-    // }
-
-    // mostrarVisitas(): void {
-    //     console.log(`Motivo/s de visita/s del cliente ${this.getNombre()}:`)
-    //     this.visitas.forEach(v => {
-    //         console.log(`${v}`)
-    //     });
-    // }
 
     getPacientes(): Paciente[] {
         return this.mascotas;
@@ -68,13 +56,12 @@ export class Cliente extends Persona {
     }
 
     eliminarMascota(index: number) {
-
-    if (index != -1) {
-      this.mascotas.splice(index, 1);
-      console.log(`\nBaja realizada con exito.`);
-    } else {
-      console.log(`\nNo se pudo realiar la Baja. No se encontró la mascota buscada.`);
-    }
+        if (index != -1) {
+            this.mascotas.splice(index, 1);
+            console.log(`\nBaja realizada con exito.`);
+        } else {
+            console.log(`\nNo se pudo realiar la Baja. No se encontró la mascota buscada.`);
+        }
     }
 
     buscarIndicePorIdMascota(idMascota:string): number {

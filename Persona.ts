@@ -45,30 +45,4 @@ export abstract class Persona {
         this.direccion = direccion;
     }
 }
-
-// const arrPacientes: Persona[] = [];
-// const arrayDeIds: string[] = [];
-
-// function altaPersona (nombre: string, telefono: number) {
-//     arrayDeIds.push(`Persona${arrayDeIds.length+1}`);
-//     let nuevaPersona = new Persona (arrayDeIds[arrayDeIds.length], nombre, telefono);
-//     arrPacientes.push(nuevaPersona)
-// }
-
-// console.log("arreglo de ids: " + arrayDeIds);
-// console.log("arreglo de pacientes: " + arrPacientes);
-
-// altaPersona("enzo", 1231231);
-
-// console.log("arreglo de ids: " + arrayDeIds);
-// console.log("arreglo de pacientes: " + arrPacientes);
-
-// console.log("Nombre de persona agregada: " + arrPacientes[0].getNombre())
-
-// altaPersona("semi", 234123);
-
-// console.log("arreglo de ids: " + arrayDeIds);
-// console.log("arreglo de pacientes: " + arrPacientes);
-
-// console.log("Nombre de persona agregada: " + arrPacientes[1].getNombre())
     

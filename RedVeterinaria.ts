@@ -106,43 +106,6 @@ export class RedVeterinaria {
         }
     }
 
-   /* public guardarAutomaticamente(): void {
-        let data = {
-            veterinarias: this.veterinarias.map(vet => ({
-                id: vet.getId(),
-                nombre: vet.getNombre(),
-                direccion: vet.getDireccion(),
-                telefono: vet.getTelefono(),
-                clientes: vet.getClientes().map(cli => ({
-                    id: cli.getId(),
-                    nombre: cli.getNombre(),
-                    direccion: cli.getDireccion(),
-                    telefono: cli.getTelefono(),
-                    cantVisitas: cli.getCantVisitas(),
-                    isVip: cli.esVip(),
-                    mascotas: cli.getPacientes().map(pac => ({
-                        id: pac.getId(),
-                        nombre: pac.getNombre(),
-                        especie: pac.getEspecie()
-                    }))
-                }))
-            })),
-            proveedores: this.proveedores.map(prov => ({
-                id: prov.getId(),
-                nombre: prov.getNombre(),
-                direccion: prov.getDireccion(),
-                telefono: prov.getTelefono(),
-                productos: prov.getProductos()
-            })),
-            contador: this.contador
-        };
-    
-        // Guardar el JSON en el archivo correspondiente
-        fs.writeFileSync(this.RUTA_DATOS, JSON.stringify(data, null, 2));
-        console.log('Datos guardados automáticamente.');
-    }*/
-
-
     // Generar los id para veterinarias y proveedores incrementando el contador
     public generarId(prefijo:string): string {
         this.contador++;

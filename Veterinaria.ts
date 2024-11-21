@@ -57,8 +57,6 @@ export class Veterinaria {
     }
   }
 
-  //public modificarPaciente () {};
-
   public generarId(prefijo:string): string {
     this.contador++;
     return prefijo + this.contador; 

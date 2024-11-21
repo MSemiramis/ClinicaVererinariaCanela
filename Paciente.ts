@@ -1,5 +1,4 @@
 export class Paciente{
-
     private id: string;
     private nombre: string;
     private especie: string
