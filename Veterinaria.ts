@@ -23,7 +23,7 @@ export class Veterinaria {
 
     if (index != -1) {
       this.clientes[index].agregarMascota(nuevaMascota);
-      console.log("Se ha agregado exitosamente la nueva mascota.")
+      console.log("Se ha agregado exitosamente la nueva mascota.");
     } else {
       console.log(`\nNo se pudo encontrar al cliente. El ID no existe.`);
     }

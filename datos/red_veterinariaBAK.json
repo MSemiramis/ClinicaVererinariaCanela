@@ -1,0 +1,92 @@
+{
+  "veterinarias": [
+    {
+      "clientes": [],
+      "nombre": "santa fe",
+      "direccion": "lavalle 3030",
+      "id": "VET6",
+      "telefono": 234536,
+      "contador": 0
+    },
+    {
+      "clientes": [],
+      "nombre": "santa fe",
+      "direccion": "lavalle 3023",
+      "id": "VET7",
+      "telefono": 23345,
+      "contador": 0
+    },
+    {
+      "clientes": [],
+      "nombre": "Curcuma",
+      "direccion": "maipu3919",
+      "id": "VET9",
+      "telefono": 2284558822,
+      "contador": 0
+    },
+    {
+      "clientes": [
+        {
+          "id": "CLI1",
+          "nombre": "enzo",
+          "telefono": 2284123123,
+          "direccion": "rivadavia 2150",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC1",
+              "nombre": "Pepe",
+              "especie": "exotico"
+            }
+          ]
+        }
+      ],
+      "nombre": "curcuma",
+      "direccion": "colon 2525",
+      "id": "VET10",
+      "telefono": 285258,
+      "contador": 0
+    }
+  ],
+  "proveedores": [
+    {
+      "id": "PROV1",
+      "nombre": "TEst",
+      "telefono": 454546,
+      "direccion": "Av. del Proveedor 101",
+      "productos": [
+        "vacunas perro"
+      ]
+    },
+    {
+      "id": "PROV2",
+      "nombre": "VetSupply S.A.",
+      "telefono": 9988776655,
+      "direccion": "Calle Comercio 500",
+      "productos": [
+        "vacunas gatos",
+        "anestesia exotica"
+      ]
+    },
+    {
+      "id": "PROV3",
+      "nombre": "Productos Veterinarios X",
+      "telefono": 5544332211,
+      "direccion": "Calle Proveedor 720",
+      "productos": [
+        "anestesias"
+      ]
+    },
+    {
+      "id": "PROV8",
+      "nombre": "provereemos",
+      "telefono": 958463,
+      "direccion": "santa maria de la yuta",
+      "productos": [
+        "papelitos"
+      ]
+    }
+  ],
+  "contador": 10
+}

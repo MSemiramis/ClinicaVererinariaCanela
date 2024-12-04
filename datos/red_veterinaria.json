@@ -1,26 +1,42 @@
 {
   "veterinarias": [
     {
-      "clientes": [],
-      "nombre": "santa fe",
-      "direccion": "lavalle 3030",
-      "id": "VET6",
-      "telefono": 234536,
+      "clientes": [
+        {
+          "id": "CLI3",
+          "nombre": "Renata",
+          "telefono": 2284585956,
+          "direccion": "Chiclana 2020",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC3",
+              "nombre": "Jazmin",
+              "especie": "gato"
+            }
+          ]
+        }
+      ],
+      "nombre": "Pimenton",
+      "direccion": "Colon 3030",
+      "id": "VET1",
+      "telefono": 22581569,
       "contador": 0
     },
     {
       "clientes": [],
-      "nombre": "santa fe",
-      "direccion": "lavalle 3023",
-      "id": "VET7",
-      "telefono": 23345,
+      "nombre": "Molido",
+      "direccion": "Av. del valle 101",
+      "id": "VET2",
+      "telefono": 23453611,
       "contador": 0
     },
     {
       "clientes": [],
       "nombre": "Canela",
       "direccion": "maipu3919",
-      "id": "VET9",
+      "id": "VET3",
       "telefono": 2284585858,
       "contador": 0
     },
@@ -28,7 +44,7 @@
       "clientes": [
         {
           "id": "CLI1",
-          "nombre": "enzo",
+          "nombre": "Enzo",
           "telefono": 2284123123,
           "direccion": "rivadavia 2150",
           "isVip": false,
@@ -40,12 +56,163 @@
               "especie": "exotico"
             }
           ]
+        },
+        {
+          "id": "CLI2",
+          "nombre": "Juan",
+          "telefono": 2284127623,
+          "direccion": "rivadavia 3234",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC2",
+              "nombre": "Negro",
+              "especie": "Perro"
+            }
+          ]
         }
       ],
-      "nombre": "curcuma",
+      "nombre": "Canela",
+      "direccion": "maipu3919",
+      "id": "VET3",
+      "telefono": 2284585858,
+      "contador": 0
+    },
+    {
+      "clientes": [
+        {
+          "id": "CLI4",
+          "nombre": "Maria",
+          "telefono": 2284143123,
+          "direccion": "vte. lopez 4145",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC4",
+              "nombre": "Card",
+              "especie": "exotico"
+            }
+          ]
+        }
+      ],
+      "nombre": "Azafran",
       "direccion": "colon 2525",
+      "id": "VET4",
+      "telefono": 5658234536,
+      "contador": 0
+    },
+    {
+      "clientes": [
+        {
+          "id": "CLI5",
+          "nombre": "Elisa",
+          "telefono": 2281143123,
+          "direccion": "vte. lopez 3919",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC5",
+              "nombre": "Renata",
+              "especie": "gato"
+            }
+          ]
+        }
+      ],
+      "nombre": "Curri",
+      "direccion": "Aguilar 123",
+      "id": "VET5",
+      "telefono": 2345364247,
+      "contador": 0
+    },
+    {
+      "clientes": [
+        {
+          "id": "CLI6",
+          "nombre": "Mati",
+          "telefono": 22856563123,
+          "direccion": "Balcarce 4145",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC6",
+              "nombre": "Apolo",
+              "especie": "perro"
+            }
+          ]
+        }
+      ],
+      "nombre": "Pimienta",
+      "direccion": "lavalle 3030",
+      "id": "VET6",
+      "telefono": 234536444,
+      "contador": 0
+    },
+    {
+      "clientes": [
+        {
+          "id": "CLI7",
+          "nombre": "Semi",
+          "telefono": 2284143123,
+          "direccion": "alsina 4045",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC7",
+              "nombre": "Gerard",
+              "especie": "perro"
+            }
+          ]
+        }
+      ],
+      "nombre": "Baharat",
+      "direccion": "lavalle 3023",
+      "id": "VET7",
+      "telefono": 23345,
+      "contador": 0
+    },
+    {
+      "clientes": [
+        {
+          "id": "CLI8",
+          "nombre": "agus",
+          "telefono": 2284143123,
+          "direccion": "españa 1858",
+          "isVip": false,
+          "cantVisitas": 1,
+          "mascotas": [
+            {
+              "id": "PAC8",
+              "nombre": "Cahester",
+              "especie": "gato"
+            }
+          ]
+        }
+      ],
+      "nombre": "Pimienta",
+      "direccion": "lavalle 3030",
+      "id": "VET8",
+      "telefono": 234536,
+      "contador": 0
+    },
+    {
+      "clientes": [],
+      "nombre": "Jengibre",
+      "direccion": "maipu3919",
+      "id": "VET9",
+      "telefono": 2284585858,
+      "contador": 0
+    },
+    {
+      "clientes": [],
+      "nombre": "Curcuma",
+      "direccion": "Lavalle 999",
       "id": "VET10",
-      "telefono": 285258,
+      "telefono": 2284966,
       "contador": 0
     }
   ],
@@ -76,6 +243,42 @@
       "direccion": "Calle Proveedor 720",
       "productos": [
         "anestesias"
+      ]
+    },
+    {
+      "id": "PROV4",
+      "nombre": "Dog S.A.",
+      "telefono": 9988776655,
+      "direccion": "Calle olavarria 1500",
+      "productos": [
+        "accesorios"
+      ]
+    },
+    {
+      "id": "PROV5",
+      "nombre": "VL S.A.",
+      "telefono": 2281316555,
+      "direccion": "catamarca 1520",
+      "productos": [
+        "higiene personal"
+      ]
+    },
+    {
+      "id": "PROV6",
+      "nombre": "Computacion curra.",
+      "telefono": 2284585858,
+      "direccion": "More 4848",
+      "productos": [
+        "Tonner"
+      ]
+    },
+    {
+      "id": "PROV7",
+      "nombre": "Dog Chow.",
+      "telefono": 2284585759,
+      "direccion": "Rivadavia 1500",
+      "productos": [
+        "alimentos"
       ]
     },
     {

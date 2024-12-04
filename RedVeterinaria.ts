@@ -28,7 +28,7 @@ export class RedVeterinaria {
 
         fs.writeFileSync(this.RUTA_DATOS, JSON.stringify(data, null, 2), "utf-8");
         
-        console.log(`Datos guardados en ${this.RUTA_DATOS}`);
+        console.log(`Datos Actualizados.`);
     }
 
     cargarDesdeJSON(): void {
@@ -100,9 +100,9 @@ export class RedVeterinaria {
     
             // Cargar contador
             this.contador = data.contador;
-            console.log(`Datos cargados desde ${this.RUTA_DATOS}`);
+            console.log(`Datos cargados correctamente.`);
         } else {
-            console.log(`Archivo no encontrado: ${this.RUTA_DATOS}`);
+            console.log(`Informacion de Veterinarias no encontrada.`);
         }
     }
 
@@ -120,6 +120,8 @@ export class RedVeterinaria {
         this.veterinarias.push(nuevaVeterinaria); 
         console.log(`Veterinaria ${nombre} agregada con ID: ${id}`);
 
+        this.guardarEnJSON();
+
     }
 
 
@@ -132,6 +134,8 @@ export class RedVeterinaria {
         if (dimA > dimD) {
             console.log(`Realizando Baja...`);
             console.log(`La veterinaria con ID ${id} fue eliminada exitosamente.`);
+            this.guardarEnJSON();
+
         } else {
             console.log(`No se encontró ninguna veterinaria con ID ${id} para eliminar.`);
         }
@@ -147,6 +151,8 @@ export class RedVeterinaria {
                 if (direccion) vet.setDireccion(direccion);
                 if(telefono) vet.setTelefono(telefono);
                 console.log(`Veterinaria con ID: ${id} modificada.`);
+
+                this.guardarEnJSON();
              return
             }
         });
@@ -191,12 +197,13 @@ export class RedVeterinaria {
         return index;
     }
 
-    public devolverVeterinariaXId (id: string): Veterinaria {
+    public devolverVeterinariaXId (id: string): Veterinaria | undefined {
         let index : number = this.buscarVeterinariaPorID(id);
         if (index != -1){
             return this.veterinarias[index]
         } else{
-            return this.veterinarias[0] 
+            console.log('Veterinaria no encontrada. Intente con un ID distinto.')
+            return undefined;
         }
         
     }
@@ -219,6 +226,8 @@ export class RedVeterinaria {
         this.proveedores.push(nuevoProveedor); 
         console.log(`Proveedor ${nombre} agregado con ID: ${id}`);
 
+        this.guardarEnJSON();
+
     }
 
     // Elimina veterinaria por ID
@@ -230,11 +239,11 @@ export class RedVeterinaria {
         if (dimA > dimD) {
             console.log(`Realizando Baja...`);
             console.log(`El Proveedor con ID ${id} fue eliminado exitosamente.`);
+
+            this.guardarEnJSON();
         } else {
             console.log(`No se encontró ningun Proveedor con ID ${id} para eliminar.`);
         }
-
-        console.log(`Proveedor con ID: ${id} eliminado.`);
 
     }
 
@@ -248,6 +257,8 @@ export class RedVeterinaria {
                 if (telefono) p.setTelefono(telefono);
                 if (direccion) p.setDireccion(direccion);
                 console.log(`Proveedor con ID: ${id} modificado.`);
+
+                this.guardarEnJSON();
             }
             return
         });
