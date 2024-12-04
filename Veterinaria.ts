@@ -1,6 +1,5 @@
 import { Paciente } from "./Paciente";
 import { Cliente } from "./Cliente";
-import { RedVeterinaria } from "./RedVeterinaria";
 
 export class Veterinaria {
   protected nombre: string;

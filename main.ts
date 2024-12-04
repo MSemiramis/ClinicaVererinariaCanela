@@ -1,14 +1,11 @@
 import * as rls from "readline-sync";
-import * as fs from "fs";
 
 import { Veterinaria } from "./Veterinaria";
 import { RedVeterinaria } from "./RedVeterinaria";
-import { Proveedor } from "./Proveedor";
-import { Paciente } from "./Paciente";
 
 // Archivo principal
 
-let redVeterinariaAdmin = new RedVeterinaria();
+let redVeterinariaAdmin: RedVeterinaria = new RedVeterinaria();
 
 redVeterinariaAdmin.cargarDesdeJSON();
 //console.log(redVeterinariaAdmin)
